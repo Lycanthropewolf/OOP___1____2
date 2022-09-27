@@ -9,10 +9,18 @@ public class Car {
     Car( String brand, String model,int productionYear, String assemblyСountry,String bodyColor,double engineVolume){
         this.brand=brand;
         this.model=model;
-        this.productionYear=productionYear;
+        if(productionYear>=0) {
+            this.productionYear = productionYear;
+        } else {
+            this.productionYear= Math.abs(productionYear);
+        }
         this.assemblyСountry=assemblyСountry;
         this.bodyColor=bodyColor;
-        this.engineVolume=engineVolume;
+        if (engineVolume>=0) {
+            this.engineVolume = engineVolume;
+        }else {
+            this.engineVolume=Math.abs(engineVolume);
+        }
     }
 
    public String toString(){
