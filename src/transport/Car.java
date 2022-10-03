@@ -237,7 +237,7 @@ public class Car {
         }
 
         public LocalDate getDurationOfInsurance() {
-            if (durationOfInsurance.isBefore(LocalDate.now()) && durationOfInsurance.isAfter(LocalDate.now().minusYears(1))) {
+            if (durationOfInsurance.isAfter(LocalDate.now().minusYears(1))) {
                 this.durationOfInsurance = durationOfInsurance;
             }else {
                 System.out.println(" срочно оформите страховку ");
