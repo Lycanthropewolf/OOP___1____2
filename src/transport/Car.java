@@ -17,6 +17,35 @@ public class Car {
     String registrationNumber;
     private int numberOfSeats;
     String rubber;
+    private Key key;
+    private Insurance insurance;
+
+    public Car(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double engineVolume,
+               String transmission, String bodyType, String registrationNumber, int numberOfSeats, String rubber, Key key, Insurance insurance) {
+
+        this.brand = brand;
+        this.model = model;
+        this.productionYear = productionYear;
+        this.assemblyСountry = assemblyСountry;
+        this.bodyColor = bodyColor;
+        this.engineVolume = Math.abs(engineVolume);
+        this.transmission = transmission;
+        this.bodyType = bodyType;
+        this.registrationNumber = registrationNumber;
+        this.numberOfSeats = numberOfSeats;
+        this.rubber = rubber;
+        if (key == null) {
+            this.key = new Key();
+        } else {
+            this.key = key;
+        }
+        if (insurance == null) {
+            this.insurance = new Insurance();
+        } else {
+            this.insurance = insurance;
+        }
+
+    }
 
     public String getModel() {
         if (model == null || model.isBlank() || model.isEmpty()) {
@@ -122,33 +151,18 @@ public class Car {
         this.rubber = rubber;
     }
 
-    public Car(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double engineVolume,
-               String transmission, String bodyType, String registrationNumber, int numberOfSeats, String rubber) {
-
-        this.brand = brand;
-        this.model = model;
-        this.productionYear = productionYear;
-        this.assemblyСountry = assemblyСountry;
-        this.bodyColor = bodyColor;
-        this.engineVolume = Math.abs(engineVolume);
-        this.transmission = transmission;
-        this.bodyType = bodyType;
-        this.registrationNumber = registrationNumber;
-        this.numberOfSeats = numberOfSeats;
-        this.rubber = rubber;
-        this.key=getKey();
-        this.insurance=getInsurance();
-    }
-
 
     public String toString() {
         return " " + getBrand() + getModel() + " , " + getProductionYear() + " год выпуска, " + " сборка в " + getAssemblyСountry() + " , " + getBodyColor()
                 + " цвет кузова, " + " объем двигателя - " + getEngineVolume() + " , коробка передач" + getTransmission() + " , тип кузова - " + getBodyType() + " ,регистрационный номер -" +
-                getRegistrationNumber() + " , количество мест - " + getNumberOfSeats() + " ,резина " + getRubber();
+                getRegistrationNumber() + " , количество мест - " + getNumberOfSeats() + " ,резина " + getRubber() + key.toString()+ insurance.toString();
     }
 
 
-    private Key key;
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
 
     public Key getKey() {
 
@@ -159,7 +173,9 @@ public class Car {
         return insurance;
     }
 
-    private Insurance insurance;
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
 
 
     public static class Key {
@@ -171,6 +187,13 @@ public class Car {
         public Key(String remoteEngineStart, String keylessEntry) {
             this.remoteEngineStart = remoteEngineStart;
             this.keylessEntry = keylessEntry;
+        }
+
+        public Key() {
+            this(" удаленный запуск двигателя", " безключевой доступ");
+        }
+        public String toString(){
+            return " , "+ getKeylessEntry()+" , "+getRemoteEngineStart();
         }
 
         public String getRemoteEngineStart() {
@@ -206,13 +229,20 @@ public class Car {
             this.insuranceNumber = insuranceNumber;
         }
 
-        public void  getDurationOfInsurance() {
-            if (durationOfInsurance.isBefore(LocalDate.now())) {
-                System.out.println("Срочно оформите страховку");
+        public Insurance() {
+            this(null, 100.00, "123456789");
+        }
+        public String toString(){
+            return " , дата регистрации страховки - "+getDurationOfInsurance()+" , стоимость страховки -  "+getInsuranceCost()+" , номер страховки -  " + getInsuranceNumber();
+        }
 
-            } else {
-                this.durationOfInsurance=durationOfInsurance;
+        public LocalDate getDurationOfInsurance() {
+            if (durationOfInsurance.isAfter(LocalDate.of(2022,01,01)) && durationOfInsurance.isBefore(LocalDate.of(2022,01,01).plusYears(1))) {
+                this.durationOfInsurance = durationOfInsurance;
+            }else {
+                System.out.println(" срочно оформите страховку ");
             }
+            return durationOfInsurance;
         }
 
 
@@ -221,15 +251,14 @@ public class Car {
         }
 
         public String getInsuranceNumber() {
-            if (insuranceNumber.length()!=9){
+            if (insuranceNumber.length() != 9) {
                 System.out.println(" номер страховки некорректен");
-            }else {
-                this.insuranceNumber=insuranceNumber;
+            } else {
+                this.insuranceNumber = insuranceNumber;
             }
             return insuranceNumber;
         }
 
 
     }
-
 }
