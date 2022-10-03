@@ -123,10 +123,10 @@ public class Car {
     }
 
     public String getRubber() {
-        if (rubber == null || rubber.isEmpty() || rubber.isBlank()) {
-            rubber = " сменить шины на сезонные";
+        if (LocalDate.now().isAfter(LocalDate.of(2022,10,1))&& LocalDate.now().isBefore(LocalDate.of(2023,5,1))) {
+            rubber = " сменить шины на зимние";
         } else {
-            this.rubber = rubber;
+            rubber= " сменить шины на летние";
         }
         return rubber;
     }
@@ -237,7 +237,7 @@ public class Car {
         }
 
         public LocalDate getDurationOfInsurance() {
-            if (durationOfInsurance.isAfter(LocalDate.of(2022,01,01)) && durationOfInsurance.isBefore(LocalDate.of(2022,01,01).plusYears(1))) {
+            if (durationOfInsurance.isBefore(LocalDate.now()) && durationOfInsurance.isAfter(LocalDate.now().minusYears(1))) {
                 this.durationOfInsurance = durationOfInsurance;
             }else {
                 System.out.println(" срочно оформите страховку ");
