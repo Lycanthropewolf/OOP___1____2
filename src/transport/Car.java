@@ -1,11 +1,13 @@
 package transport;
 
+import com.sun.jdi.connect.Transport;
+
 import java.security.Key;
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Car {
+public class Car extends Transport {
     private String brand;
     private String model;
     double engineVolume;
