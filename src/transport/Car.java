@@ -1,19 +1,12 @@
 package transport;
 
-import com.sun.jdi.connect.Transport;
-
 import java.security.Key;
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Car extends Transport {
-    private String brand;
-    private String model;
     double engineVolume;
-    String bodyColor;
-    private int productionYear;
-    private String assemblyСountry;
     String transmission;
     private String bodyType;
     String registrationNumber;
@@ -21,15 +14,9 @@ public class Car extends Transport {
     String rubber;
     private Key key;
     private Insurance insurance;
-
-    public Car(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double engineVolume,
+    public Car(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double maxSpeed,double engineVolume,
                String transmission, String bodyType, String registrationNumber, int numberOfSeats, String rubber, Key key, Insurance insurance) {
-
-        this.brand = brand;
-        this.model = model;
-        this.productionYear = productionYear;
-        this.assemblyСountry = assemblyСountry;
-        this.bodyColor = bodyColor;
+        super(brand,model,productionYear,assemblyСountry,bodyColor,maxSpeed);
         this.engineVolume = Math.abs(engineVolume);
         this.transmission = transmission;
         this.bodyType = bodyType;
@@ -49,41 +36,6 @@ public class Car extends Transport {
 
     }
 
-    public String getModel() {
-        if (model == null || model.isBlank() || model.isEmpty()) {
-            model = " Default";
-        } else {
-            this.model = model;
-        }
-        return model;
-    }
-
-    public String getBrand() {
-        if (brand == null || brand.isEmpty() || brand.isBlank()) {
-            brand = " Default";
-        } else {
-            this.brand = brand;
-        }
-        return brand;
-    }
-
-    public int getProductionYear() {
-        if (productionYear <= 0) {
-            this.productionYear = 2000;
-        } else {
-            this.productionYear = productionYear;
-        }
-        return productionYear;
-    }
-
-    public String getAssemblyСountry() {
-        if (assemblyСountry == null || assemblyСountry.isBlank() || assemblyСountry.isEmpty()) {
-            assemblyСountry = " Default";
-        } else {
-            this.assemblyСountry = assemblyСountry;
-        }
-        return assemblyСountry;
-    }
 
     public String getBodyType() {
         return bodyType;
@@ -102,14 +54,6 @@ public class Car extends Transport {
         return engineVolume;
     }
 
-    public String getBodyColor() {
-        if (bodyColor == null || bodyColor.isEmpty() || bodyColor.isBlank()) {
-            this.bodyColor = " белый";
-        } else {
-            this.bodyColor = bodyColor;
-        }
-        return bodyColor;
-    }
 
     public String getTransmission() {
         return transmission;
@@ -125,10 +69,10 @@ public class Car extends Transport {
     }
 
     public String getRubber() {
-        if (LocalDate.now().isAfter(LocalDate.of(2022,10,1))&& LocalDate.now().isBefore(LocalDate.of(2023,5,1))) {
+        if (LocalDate.now().isAfter(LocalDate.of(2022, 10, 1)) && LocalDate.now().isBefore(LocalDate.of(2023, 5, 1))) {
             rubber = " сменить шины на зимние";
         } else {
-            rubber= " сменить шины на летние";
+            rubber = " сменить шины на летние";
         }
         return rubber;
     }
@@ -137,9 +81,6 @@ public class Car extends Transport {
         this.engineVolume = engineVolume;
     }
 
-    public void setBodyColor(String bodyColor) {
-        this.bodyColor = bodyColor;
-    }
 
     public void setTransmission(String transmission) {
         this.transmission = transmission;
@@ -156,8 +97,8 @@ public class Car extends Transport {
 
     public String toString() {
         return " " + getBrand() + getModel() + " , " + getProductionYear() + " год выпуска, " + " сборка в " + getAssemblyСountry() + " , " + getBodyColor()
-                + " цвет кузова, " + " объем двигателя - " + getEngineVolume() + " , коробка передач" + getTransmission() + " , тип кузова - " + getBodyType() + " ,регистрационный номер -" +
-                getRegistrationNumber() + " , количество мест - " + getNumberOfSeats() + " ,резина " + getRubber() + key.toString()+ insurance.toString();
+                + " цвет кузова, " + " объем двигателя - " + getEngineVolume() + " , максимальная скорость - "+ getMaxSpeed()+ " км/ч "+" , коробка передач" + getTransmission() + " , тип кузова - " + getBodyType() + " ,регистрационный номер -" +
+                getRegistrationNumber() + " , количество мест - " + getNumberOfSeats() + " ,резина " + getRubber() + key.toString() + insurance.toString();
     }
 
 
@@ -194,8 +135,9 @@ public class Car extends Transport {
         public Key() {
             this(" удаленный запуск двигателя", " безключевой доступ");
         }
-        public String toString(){
-            return " , "+ getKeylessEntry()+" , "+getRemoteEngineStart();
+
+        public String toString() {
+            return " , " + getKeylessEntry() + " , " + getRemoteEngineStart();
         }
 
         public String getRemoteEngineStart() {
@@ -234,14 +176,15 @@ public class Car extends Transport {
         public Insurance() {
             this(null, 100.00, "123456789");
         }
-        public String toString(){
-            return " , дата регистрации страховки - "+getDurationOfInsurance()+" , стоимость страховки -  "+getInsuranceCost()+" , номер страховки -  " + getInsuranceNumber();
+
+        public String toString() {
+            return " , дата регистрации страховки - " + getDurationOfInsurance() + " , стоимость страховки -  " + getInsuranceCost() + " , номер страховки -  " + getInsuranceNumber();
         }
 
         public LocalDate getDurationOfInsurance() {
             if (durationOfInsurance.isAfter(LocalDate.now().minusYears(1))) {
                 this.durationOfInsurance = durationOfInsurance;
-            }else {
+            } else {
                 System.out.println(" срочно оформите страховку ");
             }
             return durationOfInsurance;
