@@ -10,8 +10,8 @@ public class Train extends Transport {
     int numberOfWagons;
 
 
-    public Train(String brand, String model, int productionYear, String assemblyСountry, String bodyColor,double maxSpeed,double tripPrice, LocalTime travelTime, String departureStationName, String endingStation, int numberOfWagons) {
-        super(brand,model,productionYear,assemblyСountry,bodyColor,maxSpeed);
+    public Train(String brand, String model, int productionYear, String assemblyСountry, String bodyColor,double maxSpeed,String engineIsType,double tripPrice, LocalTime travelTime, String departureStationName, String endingStation, int numberOfWagons) {
+        super(brand,model,productionYear,assemblyСountry,bodyColor,maxSpeed,engineIsType);
         this.tripPrice = tripPrice;
         this.travelTime = travelTime;
         this.departureStationName = departureStationName;
@@ -62,5 +62,11 @@ public class Train extends Transport {
                 +getAssemblyСountry()+" , скорость передвижения -"+getMaxSpeed()+" км/ч , отходит от -"
                 +getDepartureStationName()+" и следует до станции "+ getEndingStation()+" . Цена поездки - "+getTripPrice()
                 +" , в поезде "+ getNumberOfWagons()+ " вагонов.";
+    }
+
+    @Override
+    public void refill() {
+        System.out.println(" Заправлять можно только дизельным топливом");
+
     }
 }

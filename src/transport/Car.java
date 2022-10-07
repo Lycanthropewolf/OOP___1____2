@@ -14,9 +14,9 @@ public class Car extends Transport {
     String rubber;
     private Key key;
     private Insurance insurance;
-    public Car(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double maxSpeed,double engineVolume,
+    public Car(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double maxSpeed,String engineIsType,double engineVolume,
                String transmission, String bodyType, String registrationNumber, int numberOfSeats, String rubber, Key key, Insurance insurance) {
-        super(brand,model,productionYear,assemblyСountry,bodyColor,maxSpeed);
+        super(brand,model,productionYear,assemblyСountry,bodyColor,maxSpeed,engineIsType);
         this.engineVolume = Math.abs(engineVolume);
         this.transmission = transmission;
         this.bodyType = bodyType;
@@ -118,6 +118,19 @@ public class Car extends Transport {
 
     public void setInsurance(Insurance insurance) {
         this.insurance = insurance;
+    }
+
+    @Override
+    public void refill() {
+        if(getEngineIsType()=="dizel"){
+            System.out.println(" Заправляется дизельным топливом на заправках");
+        } else if (getEngineIsType()=="benzin") {
+            System.out.println(" Заправляется бензином на заправках");
+        } else if (getEngineIsType()=="electro") {
+            System.out.println(" заряжать на специальных электро-парковках");
+        }else {
+            System.out.println(" некорректно внесены данные о типе двигателя");
+        }
     }
 
 

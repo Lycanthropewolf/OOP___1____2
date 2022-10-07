@@ -7,14 +7,19 @@ public abstract class Transport {
     private String assemblyСountry;
     private String bodyColor;
     private double maxSpeed;
+    private String engineIsType;
 
-    public Transport(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double maxSpeed) {
-        this.brand=brand;
-        this.model=model;
-        this.productionYear=productionYear;
-        this.assemblyСountry=assemblyСountry;
-        this.bodyColor=bodyColor;
-        this.maxSpeed=maxSpeed;
+
+
+
+    public Transport(String brand, String model, int productionYear, String assemblyСountry, String bodyColor, double maxSpeed, String engineIsType) {
+        this.brand = brand;
+        this.model = model;
+        this.productionYear = productionYear;
+        this.assemblyСountry = assemblyСountry;
+        this.bodyColor = bodyColor;
+        this.maxSpeed = maxSpeed;
+        this.engineIsType = engineIsType;
     }
 
     public String getBrand() {
@@ -66,10 +71,10 @@ public abstract class Transport {
     }
 
     public double getMaxSpeed() {
-        if (maxSpeed<=0){
-            maxSpeed=100;
-        }else {
-            this.maxSpeed=maxSpeed;
+        if (maxSpeed <= 0) {
+            maxSpeed = 100;
+        } else {
+            this.maxSpeed = maxSpeed;
         }
         return maxSpeed;
     }
@@ -90,6 +95,25 @@ public abstract class Transport {
             this.maxSpeed = maxSpeed;
         }
     }
+
+    public String getEngineIsType() {
+        if (engineIsType == "dizel") {
+            this.engineIsType = engineIsType;
+        } else if (engineIsType == "benzin") {
+            this.engineIsType = engineIsType;
+        } else if (engineIsType == "electro") {
+            this.engineIsType = engineIsType;
+        }else {
+            System.out.println(" данные введены некорректно");
+        }
+        return engineIsType;
+    }
+
+    public void setEngineIsType(String engineIsType) {
+        this.engineIsType = engineIsType;
+    }
+
+    public abstract void refill();
 
 
 }
