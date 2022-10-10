@@ -2,6 +2,7 @@ package transport;
 
 import java.time.LocalTime;
 
+/*
 public class Train extends Transport {
     double tripPrice;
     LocalTime travelTime;
@@ -70,3 +71,4 @@ public class Train extends Transport {
 
     }
 }
+*/

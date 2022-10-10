@@ -1,5 +1,50 @@
 package transport;
+public abstract class Transport{
+    private String brand;
+    private String model;
+    double engineVolume;
+    public Transport(String brand, String model, double engineVolume) {
+        this.brand = brand;
+        this.model = model;
+        this.engineVolume = engineVolume;
+    }
 
+
+    public String getBrand() {
+        if (brand==null||brand.isEmpty()||brand.isBlank()){
+            brand=" некорректный ввод данных";
+        }else {
+            this.brand=brand;
+        }
+        return brand;
+    }
+
+
+    public String getModel() {
+        if (model==null||model.isBlank()||model.isEmpty()){
+            model= " некорректный ввод данных";
+        }else {
+            this.model=model;
+        }
+        return model;
+    }
+
+    public double getEngineVolume() {
+        if (engineVolume<=0){
+            engineVolume= 1.00;
+        }else {
+            this.engineVolume=engineVolume;
+        }
+        return engineVolume;
+    }
+    public abstract  void startMoving();
+
+    public abstract  void finishTheMove();
+
+
+}
+
+/*
 public abstract class Transport {
     private String brand;
     private String model;
@@ -106,7 +151,9 @@ public abstract class Transport {
         }else {
             System.out.println(" данные введены некорректно");
         }
-        return engineIsType;
+        */
+/*return engineIsType;*//*
+
     }
 
     public void setEngineIsType(String engineIsType) {
@@ -117,3 +164,4 @@ public abstract class Transport {
 
 
 }
+*/

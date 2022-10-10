@@ -1,5 +1,10 @@
 package transport;
 
+import java.util.Objects;
+
+/*
+package transport;
+
 import java.security.Key;
 import java.time.LocalDate;
 import java.util.regex.Matcher;
@@ -218,5 +223,70 @@ public class Car extends Transport {
         }
 
 
+    }
+}
+*/public class Car extends Transport implements Competing{
+    private String brand;
+    private String model;
+    double engineVolume;
+
+    public static  double PitStopSeconds= 10;
+    public static double BestLapTimeSeconds= 100.00;
+    public static double MaxSpeedKilometresOfHours = 100.00;
+
+
+    public Car(String brand, String model, double engineVolume) {
+        super(brand,model,engineVolume);
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Double.compare(car.engineVolume, engineVolume) == 0 && brand.equals(car.brand) && model.equals(car.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume);
+    }
+
+    public  void startMoving() {
+        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+" начинает движение");
+
+    }
+
+    public void finishTheMove() {
+        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+" завершает движение");
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", engineVolume=" + engineVolume +
+                '}';
+    }
+    @Override
+    public double getPitStop(double PitStopSeconds) {
+        System.out.println(PitStopSeconds+" секунд длится питстоп");
+        return PitStopSeconds;
+    }
+
+
+    @Override
+    public double getBestLapTime(double BestLapTimeSeconds) {
+        System.out.println(BestLapTimeSeconds + " секунд- лучшее время круга");
+        return BestLapTimeSeconds;
+    }
+
+    @Override
+    public double getMaxSpeed(double MaxSpeedKilometresOfHours) {
+        System.out.println(" Максимальная скорость - "+ MaxSpeedKilometresOfHours+" км/ч.");
+        return   MaxSpeedKilometresOfHours;
     }
 }
