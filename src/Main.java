@@ -1,37 +1,64 @@
 import transport.Bus;
 import transport.Car;
+import transport.Driver;
 import transport.Trucks;
 
 /*import transport.Train;*/
 public class Main {
     public static void main(String[] args) {
         Car car1 = new Car("Lada", "Granta", 1.7);
-        car1.startMoving();car1.finishTheMove();
+        car1.startMoving();
+        car1.finishTheMove();
         Car car2 = new Car("Audi", "A8 50 L TDI quattro", 3.0);
-        car2.startMoving();car2.finishTheMove();
+        car2.startMoving();
+        car2.finishTheMove();
         Car car3 = new Car("BMV", "Z8", 3.0);
-        car3.startMoving();car3.finishTheMove();
+        car3.startMoving();
+        car3.finishTheMove();
         Car car4 = new Car("Kia", "Sportage 4 поколение", 2.4);
-        car4.startMoving();car4.finishTheMove();
-car1.getBestLapTime(120.24);car1.getMaxSpeed(189.24);car1.getPitStop(45.1);
+        car4.startMoving();
+        car4.finishTheMove();
+        car1.getBestLapTime(120.24);
+        car1.getMaxSpeed(189.24);
+        car1.getPitStop(45.1);
         Trucks truck1 = new Trucks("Volvo", "FH16", 16.0);
-        truck1.startMoving();truck1.finishTheMove();
+        truck1.startMoving();
+        truck1.finishTheMove();
         Trucks truck2 = new Trucks("Камаз", "53605-3950-48", 6.0);
-        truck2.startMoving();truck2.finishTheMove();
+        truck2.startMoving();
+        truck2.finishTheMove();
         Trucks truck3 = new Trucks("MAN", "TGS", 14.00);
-        truck3.startMoving();truck3.finishTheMove();
+        truck3.startMoving();
+        truck3.finishTheMove();
         Trucks truck4 = new Trucks("Mersedes", "Atego", 13.00);
-        truck4.startMoving();truck4.finishTheMove();
-truck1.getBestLapTime(45.55);truck1.getMaxSpeed(159.5);truck1.getPitStop(145.7);
+        truck4.startMoving();
+        truck4.finishTheMove();
+        truck1.getBestLapTime(45.55);
+        truck1.getMaxSpeed(159.5);
+        truck1.getPitStop(145.7);
         Bus bus1 = new Bus("Икарус", "250", 3.5);
-        bus1.startMoving();bus1.finishTheMove();
+        bus1.startMoving();
+        bus1.finishTheMove();
         Bus bus2 = new Bus("Mercedes", "Tourrider", 4.5);
-        bus2.startMoving();bus2.finishTheMove();
+        bus2.startMoving();
+        bus2.finishTheMove();
         Bus bus3 = new Bus("ЛиАз", "4249", 3.4);
-        bus3.startMoving();bus3.finishTheMove();
+        bus3.startMoving();
+        bus3.finishTheMove();
         Bus bus4 = new Bus("НефАЗ", "VolgaBus", 5.0);
-        bus4.startMoving();bus4.finishTheMove();
-        bus1.getBestLapTime(41.7);bus1.getMaxSpeed(146.0);bus1.getPitStop(157.9);
+        bus4.startMoving();
+        bus4.finishTheMove();
+        bus1.getBestLapTime(41.7);
+        bus1.getMaxSpeed(146.0);
+        bus1.getPitStop(157.9);
+
+        Driver<Car> ivan = new Driver<Car>(" Иванов Иван Иванович", " категория B ", 10);
+        Driver<Bus> pavel = new Driver<Bus>(" Смирнов Павел Сергеевич", " категория D ", 15);
+        Driver<Trucks> nikita = new Driver<Trucks>(" Никитин Никита Сергеевич", " категория С ", 14);
+        ivan.info(car1);
+        pavel.info(bus2);
+        nikita.info(truck2);
+
     }
 
 

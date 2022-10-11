@@ -28,7 +28,7 @@ public class Bus extends Transport {
     }
 }
 */
-public class Bus<BestLapTimeSeconds> extends Transport implements Competing {
+public class Bus extends Transport implements Competing {
     private String brand;
     private String model;
     double engineVolume;

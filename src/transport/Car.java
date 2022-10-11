@@ -264,14 +264,6 @@ public class Car extends Transport {
     }
 
     @Override
-    public String toString() {
-        return "Car{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineVolume=" + engineVolume +
-                '}';
-    }
-    @Override
     public double getPitStop(double PitStopSeconds) {
         System.out.println(PitStopSeconds+" секунд длится питстоп");
         return PitStopSeconds;
@@ -289,4 +281,6 @@ public class Car extends Transport {
         System.out.println(" Максимальная скорость - "+ MaxSpeedKilometresOfHours+" км/ч.");
         return   MaxSpeedKilometresOfHours;
     }
+
+
 }
