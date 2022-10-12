@@ -225,20 +225,34 @@ public class Car extends Transport {
 
     }
 }
-*/public class Car extends Transport implements Competing{
+*/public class Car extends Transport implements Competing {
     private String brand;
     private String model;
     double engineVolume;
+    private BodyType bodyType;
 
-    public static  double PitStopSeconds= 10;
-    public static double BestLapTimeSeconds= 100.00;
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
+    }
+
+
+    public enum BodyType {SEDAN, HATCHBACK, COUPE, STATIONWAGON, SUV, CROSSOVER, PICKUP, VAN, MINIVAN}
+
+
+
+    public static double PitStopSeconds = 10;
+    public static double BestLapTimeSeconds = 100.00;
     public static double MaxSpeedKilometresOfHours = 100.00;
 
 
-    public Car(String brand, String model, double engineVolume) {
-        super(brand,model,engineVolume);
+    public Car(String brand, String model, double engineVolume, BodyType bodyType) {
+        super(brand, model, engineVolume);
+        this.bodyType = bodyType;
     }
-
 
 
     @Override
@@ -254,18 +268,18 @@ public class Car extends Transport {
         return Objects.hash(brand, model, engineVolume);
     }
 
-    public  void startMoving() {
-        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+" начинает движение");
+    public void startMoving() {
+        System.out.println(getClass() + " ," + getBrand() + " ," + getModel() + " начинает движение");
 
     }
 
     public void finishTheMove() {
-        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+" завершает движение");
+        System.out.println(getClass() + " ," + getBrand() + " ," + getModel() + " завершает движение");
     }
 
     @Override
     public double getPitStop(double PitStopSeconds) {
-        System.out.println(PitStopSeconds+" секунд длится питстоп");
+        System.out.println(PitStopSeconds + " секунд длится питстоп");
         return PitStopSeconds;
     }
 
@@ -278,9 +292,17 @@ public class Car extends Transport {
 
     @Override
     public double getMaxSpeed(double MaxSpeedKilometresOfHours) {
-        System.out.println(" Максимальная скорость - "+ MaxSpeedKilometresOfHours+" км/ч.");
-        return   MaxSpeedKilometresOfHours;
+        System.out.println(" Максимальная скорость - " + MaxSpeedKilometresOfHours + " км/ч.");
+        return MaxSpeedKilometresOfHours;
     }
 
+    @Override
+    public void printType() {
+        if (bodyType==null){
+            System.out.println(" Данных об авто недостаточно");
+        }else {
+            System.out.println(" Тип авто - "+ bodyType);
+        }
 
+    }
 }

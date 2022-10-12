@@ -32,13 +32,23 @@ public class Bus extends Transport implements Competing {
     private String brand;
     private String model;
     double engineVolume;
+    public static double pitStopSeconds = 10;
+    public static double BestLapTimeSeconds = 100.00;
+    public static double MaxSpeedKilometresOfHours = 100.00;
+    private PeopleCapacity peopleCapacity;
 
-    public static  double pitStopSeconds= 10;
-    public static double BestLapTimeSeconds= 100.00;
-public static double MaxSpeedKilometresOfHours = 100.00;
+    public PeopleCapacity getPeopleCapacity() {
+        return peopleCapacity;
+    }
 
-    public Bus(String brand, String model, double engineVolume) {
+    public void setPeopleCapacity(PeopleCapacity peopleCapacity) {
+        this.peopleCapacity = peopleCapacity;
+    }
+
+
+    public Bus(String brand, String model, double engineVolume, PeopleCapacity peopleCapacity) {
         super(brand, model, engineVolume);
+        this.peopleCapacity = peopleCapacity;
     }
 
 
@@ -56,12 +66,21 @@ public static double MaxSpeedKilometresOfHours = 100.00;
     }
 
     public void startMoving() {
-        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+" начинает движение");
+        System.out.println(getClass() + " ," + getBrand() + " ," + getModel() + " начинает движение");
 
     }
 
-    public  void finishTheMove() {
-        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+" завершает движение");
+    public void finishTheMove() {
+        System.out.println(getClass() + " ," + getBrand() + " ," + getModel() + " завершает движение");
+    }
+
+    @Override
+    public void printType() {
+        if (peopleCapacity==null){
+            System.out.println(" Данных по авто недостаточно");
+        }else {
+            System.out.println(" Вместимость автобуса от - " + peopleCapacity.getFrom()+ " до " + peopleCapacity.getTo()+" человек");
+        }
     }
 
     @Override
@@ -76,20 +95,20 @@ public static double MaxSpeedKilometresOfHours = 100.00;
 
     @Override
     public double getPitStop(double pitStopSeconds) {
-        System.out.println(pitStopSeconds+" секунд длится питстоп");
+        System.out.println(pitStopSeconds + " секунд длится питстоп");
         return pitStopSeconds;
     }
 
 
     @Override
     public double getBestLapTime(double BestLapTimeSeconds) {
-        System.out.println(BestLapTimeSeconds+ " секунд- лучшее время круга");
+        System.out.println(BestLapTimeSeconds + " секунд- лучшее время круга");
         return BestLapTimeSeconds;
     }
 
     @Override
     public double getMaxSpeed(double maxSpeedKilometresOfHours) {
-        System.out.println(" Максимальная скорость - "+MaxSpeedKilometresOfHours+" км/ч.");
-        return   maxSpeedKilometresOfHours;
+        System.out.println(" Максимальная скорость - " + MaxSpeedKilometresOfHours + " км/ч.");
+        return maxSpeedKilometresOfHours;
     }
 }

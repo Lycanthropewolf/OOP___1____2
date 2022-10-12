@@ -59,6 +59,6 @@ public class Driver <T extends Transport&Competing> {
 
 
     public void info(T transport) {
-        System.out.println("Водитель - " + getFIODriver()+" управляет автомобилем - "+ transport.getBrand()+" , "+transport.getModel()+" , и будет участвовать в заезде");
+        System.out.println("Водитель - " + getFIODriver()+" управляет автомобилем - "+ transport.getClass()+" , "+ transport.getBrand()+" , "+transport.getModel()+" , и будет участвовать в заезде");
     }
 }

@@ -2,19 +2,25 @@ package transport;
 
 import java.util.Objects;
 
-public class Trucks extends Transport implements Competing{
+public class Trucks extends Transport implements Competing {
     private String brand;
     private String model;
     double engineVolume;
+    private LoadCapasity loadCapacity;
 
-    public static  double PitStopSeconds= 10;
-    public static double BestLapTimeSeconds= 100.00;
-    public static double MaxSpeedKilometresOfHours = 100.00;
-
-    public Trucks(String brand, String model, double engineVolume) {
-        super(brand,model,engineVolume);
+    public LoadCapasity getLoadCapacity() {
+        return loadCapacity;
     }
 
+
+    public static double PitStopSeconds = 10;
+    public static double BestLapTimeSeconds = 100.00;
+    public static double MaxSpeedKilometresOfHours = 100.00;
+
+    public Trucks(String brand, String model, double engineVolume, LoadCapasity loadCapacity) {
+        super(brand, model, engineVolume);
+        this.loadCapacity = loadCapacity;
+    }
 
 
     @Override
@@ -30,13 +36,23 @@ public class Trucks extends Transport implements Competing{
         return Objects.hash(brand, model, engineVolume);
     }
 
-    public  void startMoving() {
-        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+" начинает движение");
+    public void startMoving() {
+        System.out.println(getClass() + " ," + getBrand() + " ," + getModel() + " начинает движение");
 
     }
 
-    public  void finishTheMove() {
-        System.out.println(getClass()+" ,"+getBrand()+" ,"+getModel()+ " завершает движение");
+    public void finishTheMove() {
+        System.out.println(getClass() + " ," + getBrand() + " ," + getModel() + " завершает движение");
+    }
+
+    @Override
+    public void printType() {
+      if (loadCapacity==null){
+          System.out.println(" Данных по авто недостаточно");
+      }else {
+          System.out.println(" Грузоподьемность грузовика от - " +loadCapacity.getFrom()+" до "+ loadCapacity.getTo()+" тонн");
+      }
+
     }
 
     @Override
@@ -47,9 +63,10 @@ public class Trucks extends Transport implements Competing{
                 ", engineVolume=" + engineVolume +
                 '}';
     }
+
     @Override
     public double getPitStop(double PitStopSeconds) {
-        System.out.println(PitStopSeconds+" секунд длится питстоп");
+        System.out.println(PitStopSeconds + " секунд длится питстоп");
         return PitStopSeconds;
     }
 
@@ -62,7 +79,9 @@ public class Trucks extends Transport implements Competing{
 
     @Override
     public double getMaxSpeed(double MaxSpeedKilometresOfHours) {
-        System.out.println(" Максимальная скорость - "+ MaxSpeedKilometresOfHours+" км/ч.");
-        return   MaxSpeedKilometresOfHours;
+        System.out.println(" Максимальная скорость - " + MaxSpeedKilometresOfHours + " км/ч.");
+        return MaxSpeedKilometresOfHours;
     }
+
+
 }

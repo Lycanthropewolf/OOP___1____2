@@ -1,51 +1,48 @@
-import transport.Bus;
-import transport.Car;
-import transport.Driver;
-import transport.Trucks;
+import transport.*;
 
 /*import transport.Train;*/
 public class Main {
     public static void main(String[] args) {
-        Car car1 = new Car("Lada", "Granta", 1.7);
+        Car car1 = new Car("Lada", "Granta", 1.7, Car.BodyType.SEDAN);
         car1.startMoving();
         car1.finishTheMove();
-        Car car2 = new Car("Audi", "A8 50 L TDI quattro", 3.0);
+        Car car2 = new Car("Audi", "A8 50 L TDI quattro", 3.0, Car.BodyType.COUPE);
         car2.startMoving();
         car2.finishTheMove();
-        Car car3 = new Car("BMV", "Z8", 3.0);
+        Car car3 = new Car("BMV", "Z8", 3.0, Car.BodyType.COUPE);
         car3.startMoving();
         car3.finishTheMove();
-        Car car4 = new Car("Kia", "Sportage 4 поколение", 2.4);
+        Car car4 = new Car("Kia", "Sportage 4 поколение", 2.4, Car.BodyType.CROSSOVER);
         car4.startMoving();
         car4.finishTheMove();
         car1.getBestLapTime(120.24);
         car1.getMaxSpeed(189.24);
         car1.getPitStop(45.1);
-        Trucks truck1 = new Trucks("Volvo", "FH16", 16.0);
+        Trucks truck1 = new Trucks("Volvo", "FH16", 16.0, LoadCapasity.N1);
         truck1.startMoving();
         truck1.finishTheMove();
-        Trucks truck2 = new Trucks("Камаз", "53605-3950-48", 6.0);
+        Trucks truck2 = new Trucks("Камаз", "53605-3950-48", 6.0, LoadCapasity.N3);
         truck2.startMoving();
         truck2.finishTheMove();
-        Trucks truck3 = new Trucks("MAN", "TGS", 14.00);
+        Trucks truck3 = new Trucks("MAN", "TGS", 14.00, LoadCapasity.N2);
         truck3.startMoving();
         truck3.finishTheMove();
-        Trucks truck4 = new Trucks("Mersedes", "Atego", 13.00);
+        Trucks truck4 = new Trucks("Mersedes", "Atego", 13.00, LoadCapasity.N2);
         truck4.startMoving();
         truck4.finishTheMove();
         truck1.getBestLapTime(45.55);
         truck1.getMaxSpeed(159.5);
         truck1.getPitStop(145.7);
-        Bus bus1 = new Bus("Икарус", "250", 3.5);
+        Bus bus1 = new Bus("Икарус", "250", 3.5, PeopleCapacity.BIG);
         bus1.startMoving();
         bus1.finishTheMove();
-        Bus bus2 = new Bus("Mercedes", "Tourrider", 4.5);
+        Bus bus2 = new Bus("Mercedes", "Tourrider", 4.5, PeopleCapacity.VERY_BIG);
         bus2.startMoving();
         bus2.finishTheMove();
-        Bus bus3 = new Bus("ЛиАз", "4249", 3.4);
+        Bus bus3 = new Bus("ЛиАз", "4249", 3.4, PeopleCapacity.MIDDLE);
         bus3.startMoving();
         bus3.finishTheMove();
-        Bus bus4 = new Bus("НефАЗ", "VolgaBus", 5.0);
+        Bus bus4 = new Bus("НефАЗ", "VolgaBus", 5.0, PeopleCapacity.SMALL);
         bus4.startMoving();
         bus4.finishTheMove();
         bus1.getBestLapTime(41.7);
@@ -58,7 +55,9 @@ public class Main {
         ivan.info(car1);
         pavel.info(bus2);
         nikita.info(truck2);
-
+        car1.printType();
+        bus1.printType();
+        truck1.printType();
     }
 
 
