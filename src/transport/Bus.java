@@ -32,9 +32,9 @@ public class Bus extends Transport implements Competing {
     private String brand;
     private String model;
     private double engineVolume;
-    public static double pitStopSeconds = 10;
-    public static double BestLapTimeSeconds = 100.00;
-    public static double MaxSpeedKilometresOfHours = 100.00;
+    private static double pitStopSeconds = 10;
+    private static double BestLapTimeSeconds = 100.00;
+    private static double MaxSpeedKilometresOfHours = 100.00;
     private PeopleCapacity peopleCapacity;
 
     public PeopleCapacity getPeopleCapacity() {
