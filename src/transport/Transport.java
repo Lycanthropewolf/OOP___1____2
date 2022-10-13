@@ -2,7 +2,7 @@ package transport;
 public abstract class Transport{
     private String brand;
     private String model;
-    double engineVolume;
+    private double engineVolume;
     public Transport(String brand, String model, double engineVolume) {
         this.brand = brand;
         this.model = model;

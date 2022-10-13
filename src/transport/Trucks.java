@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Trucks extends Transport implements Competing {
     private String brand;
     private String model;
-    double engineVolume;
+    private double engineVolume;
     private LoadCapasity loadCapacity;
 
     public LoadCapasity getLoadCapacity() {

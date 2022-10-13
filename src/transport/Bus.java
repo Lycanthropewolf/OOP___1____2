@@ -31,7 +31,7 @@ public class Bus extends Transport {
 public class Bus extends Transport implements Competing {
     private String brand;
     private String model;
-    double engineVolume;
+    private double engineVolume;
     public static double pitStopSeconds = 10;
     public static double BestLapTimeSeconds = 100.00;
     public static double MaxSpeedKilometresOfHours = 100.00;
@@ -76,10 +76,10 @@ public class Bus extends Transport implements Competing {
 
     @Override
     public void printType() {
-        if (peopleCapacity==null){
+        if (peopleCapacity == null) {
             System.out.println(" Данных по авто недостаточно");
-        }else {
-            System.out.println(" Вместимость автобуса от - " + peopleCapacity.getFrom()+ " до " + peopleCapacity.getTo()+" человек");
+        } else {
+            System.out.println(" Вместимость автобуса от - " + peopleCapacity.getFrom() + " до " + peopleCapacity.getTo() + " человек");
         }
     }
 

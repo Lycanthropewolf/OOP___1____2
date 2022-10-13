@@ -49,12 +49,13 @@ public class Main {
         bus1.getMaxSpeed(146.0);
         bus1.getPitStop(157.9);
 
-        Driver<Car> ivan = new Driver<Car>(" Иванов Иван Иванович", " категория B ", 10);
-        Driver<Bus> pavel = new Driver<Bus>(" Смирнов Павел Сергеевич", " категория D ", 15);
-        Driver<Trucks> nikita = new Driver<Trucks>(" Никитин Никита Сергеевич", " категория С ", 14);
-        ivan.info(car1);
-        pavel.info(bus2);
-        nikita.info(truck2);
+
+        CarDriverB iwan = new CarDriverB(" Иванов Иван Иванович", " B", 14, car1);
+        TrucksDriverC nikita = new TrucksDriverC(" Никитин Никита Сергеевич", "С", 16, truck1);
+        BusDriverD john = new BusDriverD(" Никифоров Евгений Владимирович", "D", 19, bus1);
+        iwan.info();
+        nikita.info();
+        john.info();
         car1.printType();
         bus1.printType();
         truck1.printType();

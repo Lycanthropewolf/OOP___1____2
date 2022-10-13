@@ -228,7 +228,7 @@ public class Car extends Transport {
 */public class Car extends Transport implements Competing {
     private String brand;
     private String model;
-    double engineVolume;
+    private double engineVolume;
     private BodyType bodyType;
 
     public BodyType getBodyType() {
@@ -241,7 +241,6 @@ public class Car extends Transport {
 
 
     public enum BodyType {SEDAN, HATCHBACK, COUPE, STATIONWAGON, SUV, CROSSOVER, PICKUP, VAN, MINIVAN}
-
 
 
     public static double PitStopSeconds = 10;
@@ -298,10 +297,10 @@ public class Car extends Transport {
 
     @Override
     public void printType() {
-        if (bodyType==null){
+        if (bodyType == null) {
             System.out.println(" Данных об авто недостаточно");
-        }else {
-            System.out.println(" Тип авто - "+ bodyType);
+        } else {
+            System.out.println(" Тип авто - " + bodyType);
         }
 
     }
