@@ -50,6 +50,7 @@ public class Main {
         bus1.getPitStop(157.9);
 
 
+
         CarDriverB iwan = new CarDriverB(" Иванов Иван Иванович", " B", 14, car1);
         TrucksDriverC nikita = new TrucksDriverC(" Никитин Никита Сергеевич", "С", 16, truck1);
         BusDriverD john = new BusDriverD(" Никифоров Евгений Владимирович", "D", 19, bus1);
@@ -59,9 +60,25 @@ public class Main {
         car1.printType();
         bus1.printType();
         truck1.printType();
+        service(car1, car2, car3, car4, truck1, truck2, truck3, truck4, bus1, bus2, bus3, bus4);
     }
 
+    private static void service(Transport... transports) {
+        for (Transport transport : transports) {
+            serviceTransport(transport);
+        }
+    }
+    private static void serviceTransport(Transport transport) {
+        try {
+            if (!transport.service()) {
+                throw new RuntimeException(" Транспорт " + transport.getBrand() + " " + transport.getModel() + " не прошел диагностику");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
 
+
+    }
 }
 /*
 import java.time.LocalDate;

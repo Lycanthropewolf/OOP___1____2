@@ -4,6 +4,8 @@ import java.util.Objects;
 
 abstract public class Driver<T extends Transport & Competing> {
     private String fullName;
+
+
     private String driverLicense;
     private int experience;
     private T transport;
@@ -11,7 +13,7 @@ abstract public class Driver<T extends Transport & Competing> {
 
     protected Driver(String fullName, String driverLicense, int experience, T transport) {
         this.fullName = fullName;
-        this.driverLicense = driverLicense;
+       setDriverLicense(driverLicense);
         this.experience = experience;
         this.transport = transport;
     }
@@ -25,6 +27,12 @@ abstract public class Driver<T extends Transport & Competing> {
         return driverLicense;
     }
 
+    public void setDriverLicense(String driverLicense) {
+        if (driverLicense==null){
+            throw new IllegalArgumentException(" необходимо указать категорию прав");
+        }
+        this.driverLicense = driverLicense;
+    }
 
     public int getExperience() {
         return experience;
