@@ -1,5 +1,7 @@
 import transport.*;
 
+import java.util.List;
+
 /*import transport.Train;*/
 public class Main {
     public static void main(String[] args) {
@@ -48,9 +50,12 @@ public class Main {
         bus1.getBestLapTime(41.7);
         bus1.getMaxSpeed(146.0);
         bus1.getPitStop(157.9);
-
-
-
+        Mechanic mechanicCar = new Mechanic<Car>(" Иван", " Иванов", "FIT");
+        Mechanic mechanicTrack = new Mechanic<Trucks>(" Петр", " Петров", " REACT");
+        Mechanic mechanicBus = new Mechanic<Bus>(" Жека", "Ручников", " CTO БАТЯ");
+        Sponsor sponsor1 = new Sponsor("Вася", 2_462_594.4);
+        Sponsor sponsor2 = new Sponsor("Дима", 2_346_332.0);
+        Sponsor sponsor3 = new Sponsor("Никита", 5_462_782.45);
         CarDriverB iwan = new CarDriverB(" Иванов Иван Иванович", " B", 14, car1);
         TrucksDriverC nikita = new TrucksDriverC(" Никитин Никита Сергеевич", "С", 16, truck1);
         BusDriverD john = new BusDriverD(" Никифоров Евгений Владимирович", "D", 19, bus1);
@@ -61,6 +66,45 @@ public class Main {
         bus1.printType();
         truck1.printType();
         service(car1, car2, car3, car4, truck1, truck2, truck3, truck4, bus1, bus2, bus3, bus4);
+        car1.addDriver(iwan, new Driver<Car>("fvdv", "f", 23, car1) {
+        });
+        car1.addMechanic(mechanicCar);
+        car1.addSponsor(sponsor1, sponsor2, sponsor3);
+
+        truck1.addDriver(nikita);
+        truck1.addMechanic(mechanicTrack);
+        truck1.addSponsor(sponsor2);
+
+        bus1.addDriver(john);
+        bus1.addMechanic(mechanicBus);
+        bus1.addSponsor(sponsor3);
+
+
+        List<Transport> transports = List.of(
+                car1, car2, car3, car4,
+                truck1, truck2, truck3, truck4,
+                bus1, bus2, bus3, bus4
+        );
+        for (Transport transport : transports) {
+            printInfo(transport);
+        }
+
+        ServiceStation serviceStation = new ServiceStation();
+        serviceStation.addCar(car2);
+        serviceStation.addTruck(truck3);
+        serviceStation.service();
+        serviceStation.service();
+
+    }
+
+    private static void printInfo(Transport transport) {
+        System.out.println(" Информация по автомобилю " + transport.getBrand() + transport.getModel());
+        System.out.println("Водители : " + transport.getDrivers());
+        System.out.println(" Спонсоры : " + transport.getSponsors());
+        System.out.println(" Механики :" + transport.getMechanics());
+
+        System.out.println();
+
     }
 
     private static void service(Transport... transports) {
@@ -68,6 +112,7 @@ public class Main {
             serviceTransport(transport);
         }
     }
+
     private static void serviceTransport(Transport transport) {
         try {
             if (!transport.service()) {

@@ -90,6 +90,11 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
+    public void repair() {
+        System.out.println(" "+getBrand()+getModel()+" отремонтирован! ");
+    }
+
+    @Override
     public String toString() {
         return "Bus{" +
                 "brand='" + brand + '\'' +

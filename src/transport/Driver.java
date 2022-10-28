@@ -4,8 +4,6 @@ import java.util.Objects;
 
 abstract public class Driver<T extends Transport & Competing> {
     private String fullName;
-
-
     private String driverLicense;
     private int experience;
     private T transport;
@@ -42,6 +40,9 @@ abstract public class Driver<T extends Transport & Competing> {
         this.experience = experience;
     }
 
+    public T getTransport() {
+        return transport;
+    }
 
     public void startMoving(T transport) {
         System.out.println(getFullName() + " Начинает движение");
@@ -63,6 +64,8 @@ abstract public class Driver<T extends Transport & Competing> {
         System.out.println("Водитель - " + getFullName() + " управляет автомобилем - " + transport.getClass() + " , " + transport.getBrand() + " , " + transport.getModel() + " , и будет участвовать в заезде");
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,5 +77,10 @@ abstract public class Driver<T extends Transport & Competing> {
     @Override
     public int hashCode() {
         return Objects.hash(fullName, driverLicense, experience, transport);
+    }
+
+    @Override
+    public String toString() {
+        return getFullName()+" , стаж вождения " + getExperience()+" лет , категория "+getTransport();
     }
 }

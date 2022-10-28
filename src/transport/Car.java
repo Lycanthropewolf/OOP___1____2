@@ -309,4 +309,9 @@ public class Car extends Transport {
     public boolean service() {
         return Math.random()>0.7;
     }
+
+    @Override
+    public void repair() {
+        System.out.println(" "+getBrand()+getModel()+" отремонтирована! ");
+    }
 }
